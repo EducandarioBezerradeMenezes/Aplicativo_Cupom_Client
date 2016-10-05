@@ -38,7 +38,8 @@ Para o desenvolvimento desta aplicação foi utilizado o Ionic e o Cordova para 
        CNPJ e valor;       
 
     •  tab-photo – template usado para possibilitar o usuario a fotografar o cupom fiscal e assim, usando uma
-       API de OCR, retirar da imagem os dados necessários para o cadastro do cupom(Não Implementado Completamente);       
+       API de OCR, retirar da imagem os dados necessários para o cadastro do cupom (Não Implementado
+       Completamente);       
 
 
   •	Javascript:
