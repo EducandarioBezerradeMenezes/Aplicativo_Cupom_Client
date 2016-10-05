@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <!--Stylesheet (CSS)-->
+
+    <!--Ionic-->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <!--Bootstrap-->
+    <!--<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    -->
+    <!--APP-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!--Javascript-->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!--OCR Library-->
+    <script src="lib/ocrad/ocrad.js"></script>
+
+    <!--Angular Locale-->
+    <script src="lib/angular/angular-locale_pt-br.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <!--Value-->
+    <script src="js/value/configValue.js"></script>
+
+    <!--Config-->
+    <script src="js/config/routeConfig.js"></script>
+
+    <!--Directive-->
+    <script src="js/directive/uiCnpjDirective.js"></script>
+    <script src="js/directive/uiDateDirective.js"></script>
+    <script src="js/directive/uiMoneyDirective.js"></script>
+    <script src="js/directive/uiCooDirective.js"></script>
+    <script src="js/directive/uiFocusDirective.js"></script>
+
+    <!--Controller-->
+    <script src="js/controller/cupomCtrl.js"></script>
+    <script src="js/controller/homeCtrl.js"></script>
+    <script src="js/controller/photoCtrl.js"></script>
+
+    <!--Service-->
+    <script src="js/service/cupomService.js"></script>
+    <script src="js/service/ocrService.js"></script>
+
+  </head>
+  <body ng-app="cupom">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
