@@ -48,7 +48,7 @@ Para o desenvolvimento desta aplicação foi utilizado o Ionic e o Cordova para 
 	    aplicação;
 
     • routeConfig – gerencia as rotas/estados da aplicação, informando seus endereços, os arquivos usados e os
-      controllers de tais rotas.
+      controllers de tais rotas;
 
     •	configValue – guarda os valores das Url's a serem utilizadas para se comunicar com as API's;
 
@@ -59,19 +59,19 @@ Para o desenvolvimento desta aplicação foi utilizado o Ionic e o Cordova para 
      configValue (Não Implementado Completamente);
 
     •	cupomCtrl – controller utilizado para gerenciar as operações envolvendo o cadastramento manual do
-      cupom fiscal.
+      cupom fiscal;
 
     • uiCnpjDirective – cria uma diretiva que possibilita apenas a digitação de um cnpj formatado dentro de
-      um "input" HTML (99.999.999/9999-99), retornando uma string com apenas números.
+      um "input" HTML (99.999.999/9999-99), retornando uma string com apenas números;
 
     • uiCooDirective – cria uma diretiva que possibilita apenas a digitação de um coo formatado dentro de
-      um "input" HTML (999999), retornando uma string com apenas números.
+      um "input" HTML (999999), retornando uma string com apenas números;
 
     • uiDateDirective – cria uma diretiva que possibilita apenas a digitação de uma data formatada dentro de
-      um "input" HTML (DD/MM/AAAA), retornando um objeto do tipo data.
+      um "input" HTML (DD/MM/AAAA), retornando um objeto do tipo data;
 
     • uiMoneyDirective – cria uma diretiva que possibilita apenas a digitação de um valor em dinheiro dentro
-      de um "input" HTML (R$ 9,99), retornando um número decimal.
+      de um "input" HTML (R$ 9,99), retornando um número decimal;
 
     • uiFocusDirective – cria uma diretiva que dá foco a um elemento HTML que possui um 'name' com mesmo valor
       da variavel focus.

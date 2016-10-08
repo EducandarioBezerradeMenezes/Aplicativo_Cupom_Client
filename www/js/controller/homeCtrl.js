@@ -1,3 +1,3 @@
-angular.module('cupom').controller('homeCtrl', function($scope) {
+angular.module('cupom').controller('homeCtrl', function($scope, $rootScope) {
 
 });

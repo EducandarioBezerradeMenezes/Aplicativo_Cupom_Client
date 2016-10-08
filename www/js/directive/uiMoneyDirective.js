@@ -45,17 +45,6 @@ angular.module("cupom").directive("uiMoney",function(){
         //render the formated value
         ctrl.$render();
       });
-
-      //what will be returned to the scope
-      ctrl.$parsers.push(function(money){
-        //removes "R$"
-        money = money.replace("R$","");
-        //Replaces "," for "."
-        money = money.replace(/[\,]/,".");
-
-        //return  money as number
-        return money;
-      });
     },
   };
 });

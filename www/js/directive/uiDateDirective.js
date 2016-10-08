@@ -33,23 +33,12 @@ angular.module("cupom").directive("uiDate",function(){
       };
 
       //When a key is pressed do
-      element.bind("keyup", function(){
+      element.on("keyup", function(){
         //change the value to the new formated value
         ctrl.$setViewValue(_formatDate(ctrl.$viewValue));
         //render the formated value
         ctrl.$render();
       });
-
-      //pass a Date object to the scope
-      ctrl.$parsers.push(function(date){
-        //when date length is 10 digits
-        if(date.length == 10){
-          var array = date.split("/");
-          //create a Date object using the date written
-          return new Date(array[2], array[1]-1, array[0]);
-        }
-      });
-
     },
   };
 });

@@ -2,7 +2,7 @@
 //Manage Cupom template
 
 //Creates new Controller in "cupom" module
-angular.module('cupom').controller('cupomCtrl', function($scope, $location, $timeout, cupomApi) {
+angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, cupomApi) {
 
   //Change focus to element with specific ID
   $scope.changeFocus = function(name){
@@ -23,6 +23,8 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $location, $tim
   //Checks if date has already passed
   $scope.checkDate = function(data){
 
+    var array = data.split("/");
+    data = new Date(array[2],array[1]-1, array[0]);
     if(data!=null && data< new Date()) return true;
 
     else return false;
@@ -30,7 +32,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $location, $tim
 
   //Save a new Cupom
   $scope.saveCupom = function(){
-
+    $scope.cupom.valor = $scope.cupom.valor.replace("R$", "");
     //Post Cupom on Backend
     //cupomApi.postCupom($scope.cupom).success(function(){
 
@@ -50,6 +52,15 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $location, $tim
 
   //Cupom
   $scope.cupom = {};
+
+  //Watchs Root Scope for new Cupom
+  $rootScope.$watch("cupom", function(cupom){
+    //Get Cupom from Photo
+    if(cupom){
+      //Put Cupom on scope
+      $scope.cupom = cupom;
+    }
+  });
 
   //Errors
   $scope.err   = {};

@@ -47,6 +47,7 @@ angular.module("cupom").directive("uiCnpj",function(){
         //render the formated value
         ctrl.$render();
       });
+
     },
   };
 });

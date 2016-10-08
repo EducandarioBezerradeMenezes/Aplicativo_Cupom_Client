@@ -20,7 +20,6 @@ angular.module("cupom").directive("uiFocus",function(){
         //Gives focus to the element with specific ID
         if(attrs.name == value) element[0].focus();
       });
-
     },
   };
 });

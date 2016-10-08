@@ -5,7 +5,6 @@
 
     <!--Form: Creates a new Cupom-->
 
-
     <!--Textbox: COO of Cupom-->
     <label class="item item-input">
       <span class="input-label">COO:</span>
@@ -34,14 +33,12 @@
     <label class="item item-input">
       <span class="input-label">Total:</span>
       <input name="valor" type="text" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
-      ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom()" ng-blur="cupom.valor.length>1 || invalid('valor')" ui-money ui-focus/>
+      ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom()" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus/>
     </label>
 
     <br/><br/>
     <!--Button: Saves new Cupom-->
     <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || cupom.valo==0" ng-click="saveCupom()">Cadastrar Cupom</button>
-
-
   </ion-content>
       </form>
 </ion-view>
