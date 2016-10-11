@@ -115,8 +115,6 @@ angular.module('cupom').controller('photoCtrl', function($scope, $rootScope, $lo
     correctOrientation: true
   }
 
-  $scope.text ="";
-
   //Take Photo when Tab open
   $scope.takePhoto();
 
