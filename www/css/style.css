@@ -1,0 +1,29 @@
+/* Aparencia geral do app */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+/*  Cuida da home do app */
+.h2_home {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.p_home {
+  padding-left: 5vh;
+  padding-right: 5vh;
+  font-size: 14px;
+  text-align: justify;
+}
+
+/* Cuida do cadastrar cupom manual */
+.label_cupom {
+
+}
+
+.ion-content_cupom {
+    padding-top: 30px;
+}
