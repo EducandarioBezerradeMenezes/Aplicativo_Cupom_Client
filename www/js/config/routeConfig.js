@@ -41,6 +41,16 @@ angular.module("cupom").config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+  //Route for Sobre Tab
+  .state('tab.sobre', {
+    url: '/sobre',
+    views: {
+      'tab-sobre': {
+        templateUrl: 'templates/tab-sobre.html',
+      }
+    }
+  })
+
   //Route for Photo Tab
   .state('tab.photo', {
     url: '/photo',

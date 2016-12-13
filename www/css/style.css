@@ -27,3 +27,10 @@ section {
 .ion-content_cupom {
     padding-top: 30px;
 }
+
+/* formata imagem aba sobre*/
+.img_logo {
+  height: 30%;
+  width: 30%;
+  margin: 0 auto;
+}
