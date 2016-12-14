@@ -42,11 +42,11 @@ angular.module("cupom").config(function($stateProvider, $urlRouterProvider) {
   })
 
   //Route for Sobre Tab
-  .state('tab.sobre', {
-    url: '/sobre',
+  .state('tab.about', {
+    url: '/about',
     views: {
-      'tab-sobre': {
-        templateUrl: 'templates/tab-sobre.html',
+      'tab-about': {
+        templateUrl: 'templates/tab-about.html',
       }
     }
   })

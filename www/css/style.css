@@ -17,6 +17,8 @@ section {
   padding-right: 5vh;
   font-size: 14px;
   text-align: justify;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 /* Cuida do cadastrar cupom manual */
