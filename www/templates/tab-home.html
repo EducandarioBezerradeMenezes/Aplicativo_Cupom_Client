@@ -1,24 +1,17 @@
 <!--Template: Inform User-->
-<ion-view view-title="Cupom App">
+<ion-view view-title="Bem Vindo!">
   <ion-content class="padding">
     <section>
-      <h2 class="h2_home">Bem vindo ao Cupom App</h2>
+
+      <img class="img_qrcode" src="img/qrcode.png" alt="foto de um cupom com QR-Code" />
 
       <p class="p_home">
-      <strong>Manual: </strong>Para cadastrar as informações do cupom manualmente entre na guia "Cupom" e digite as informações solicitadas na guia em questão.
+        Ajude uma criança, doe seu cupom fiscal tirando uma foto do código do cupom semelhante a imagem acima, caso não tenha informe manualmente as informações necessárias.
       </p>
-
-      <p class="p_home">
-      <strong>QR Code: </strong>Caso o cupom posssua um QR code e seja desejado cadastra-lo por este entre na guia "QR Code" e tire uma foto do QR code do cupom.
-      </p>
-
-      <p class="p_home">
-        <strong>Foto: </strong> Para cadastrar as informações do cupom a partir de uma foto deste entre na guia "Foto" e tire uma foto do cupom, onde seja legivel o: COO, Data, CNPJ e Valor total.
-      </p>
-
-      <p class="p_home">
-        <strong>Obrigado por utilizar o aplicativo Cupom App.</strong>
-      </p>
+      <div class="home_buttons">
+        <button class="button button-block button-positive" name="qrcode">Tirar Foto</button>
+        <a href="#/tab/cupom" class="button button-block button-positive" type="button" name="manual">Informe Manualmente</a>
+      </div>
     </section>
   </ion-content>
 </ion-view>

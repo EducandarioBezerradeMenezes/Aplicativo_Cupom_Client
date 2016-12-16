@@ -1,7 +1,7 @@
 {
-  "name": "cupomapp",
+  "name": "doe_educandario",
   "version": "1.1.1",
-  "description": "cupomApp: An Ionic project",
+  "description": "Aplicativo para a doação de cupons fiscais para o Educandario Bezerra de Menezes",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

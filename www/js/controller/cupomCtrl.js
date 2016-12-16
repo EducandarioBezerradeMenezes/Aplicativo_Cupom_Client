@@ -2,7 +2,7 @@
 //Manage Cupom template
 
 //Creates new Controller in "cupom" module
-angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, cupomApi) {
+angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, $ionicPopup, cupomApi) {
 
   //Change focus to element with specific ID
   $scope.changeFocus = function(name){
@@ -50,18 +50,30 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     //});
   };
 
+  //Show Alert with cupom image
+  $scope.showAlert = function() {
+
+  //Creating Alert
+  var alertPopup = $ionicPopup.alert({
+
+    //Text to appear on Alert
+    title: 'Insira os campos informados a seguir!',
+
+    //HTML of Alert
+    template: `
+      <!--Image of a cupom and it's fields-->
+      <img src="img/cupom.jpg" class="cupomAlert" alt="Foto contendo as informações relacionadas ao preenchimento manual do cupom" />
+
+    `
+  });
+};
+
   //Cupom
   $scope.cupom = {};
 
-  //Watchs Root Scope for new Cupom
-  $rootScope.$watch("cupom", function(cupom){
-    //Get Cupom from Photo
-    if(cupom){
-      //Put Cupom on scope
-      $scope.cupom = cupom;
-    }
-  });
-
   //Errors
   $scope.err   = {};
+
+  //Call Alert to inform user
+  $scope.showAlert();
 });

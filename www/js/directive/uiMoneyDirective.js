@@ -16,23 +16,14 @@ angular.module("cupom").directive("uiMoney",function(){
         if(!money || money=="R$") return "";
 
         //replace dot for comma
-        money = money.replace(/[\.]/g,",");
+        money = money.replace(/[^\d]*[,]*/g,"");
 
-        //add R$ and remove anything that is not a number, comma
-        money = "R$ " + money.replace(/[^0-9,\,,\.]+/g,"");
-
-        //enable only 2 digits after a comma
-        if(money.indexOf(",")!=-1){
-          money = money.substring(0,money.indexOf(",")+3);
-        };
-
-        //comma or dot can't be first digit
-        if(money.indexOf(",")<4 && money.indexOf(",")>0){
-          money = money.substring(0,3) + "0" + money.substring(3);
+        if(money.length > 2){
+          money = money.substring(0,money.length - 2) + ',' + money.substring(money.length-2);
         }
 
-        //only 1 comma
-        money = money.substring(0,money.indexOf(",")+1) + money.substring(money.indexOf(",")+1).replace(/[\,]/,"");
+        //add R$ and remove anything that is not a number, comma
+        money = "R$ " + money;
 
         //return money formated
         return money;

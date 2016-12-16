@@ -49,17 +49,6 @@ angular.module("cupom").config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/tab-about.html',
       }
     }
-  })
-
-  //Route for Photo Tab
-  .state('tab.photo', {
-    url: '/photo',
-    views: {
-      'tab-photo': {
-        templateUrl: 'templates/tab-photo.html',
-        controller: 'photoCtrl'
-      }
-    }
   });
 
 

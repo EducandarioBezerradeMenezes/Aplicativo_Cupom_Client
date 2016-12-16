@@ -36,3 +36,20 @@ section {
   width: 30%;
   margin: 0 auto;
 }
+
+
+/*Image de QR-Code Home*/
+.img_qrcode {
+  padding-bottom: 20px;
+  margin: 0 auto;
+  width: 70%;
+}
+
+/*Ajuda no Preenchimento*/
+.helpper {
+  margin: 10px auto;
+}
+
+.cupomAlert {
+  width: 100%;
+}
