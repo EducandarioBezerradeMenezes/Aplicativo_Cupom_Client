@@ -53,3 +53,19 @@ section {
 .cupomAlert {
   width: 100%;
 }
+
+/* Spinner  */
+.divSpinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 85px;
+  text-align: center;
+  z-index: 10;
+}
+
+.spinner svg {
+  width: 100% !important;
+  height: 100% !important;
+  margin: auto !important;
+}

@@ -132,10 +132,12 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     //Post Cupom on Backend
     cupomApi.postCupom(cupom).success(function(){
 
-      alert('Cupom Enviado com Sucesso!');
-
       //Cupom Sent to BackEnd
       $scope.sending = false;
+
+      //Inform Success to User
+      alert('Cupom Enviado com Sucesso!');
+
 
       //Change focus back to COO field
       $scope.changeFocus("coo");
@@ -160,14 +162,15 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     //Text to appear on Alert
     title: 'Insira os campos informados a seguir!',
 
+
     //HTML of Alert
     template: `
       <!--Image of a cupom and it's fields-->
       <img src="img/cupom.jpg" class="cupomAlert" alt="Foto contendo as informações relacionadas ao preenchimento manual do cupom" />
-
     `
   });
 };
+
 
   //Cupom
   $scope.cupom = {};
