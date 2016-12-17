@@ -61,6 +61,10 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
   //Creating Alert
   var alertPopup = $ionicPopup.alert({
 
+    //Text to appear on Alert
+    title: 'Insira os campos informados a seguir!',		
+
+
     //HTML of Alert
     template: `
       <!--Image of a cupom and it's fields-->
