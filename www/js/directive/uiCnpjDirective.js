@@ -9,10 +9,7 @@ angular.module("cupom").directive("uiCnpj",function(){
 
     link: function(scope, element, attrs, ctrl){
       //Function to format the cnpj
-      var _formatCnpj = function(cnpj){
-
-        //if empty return empty
-        if(!cnpj) return cnpj;
+      var _formatCnpj = function(cnpj = ""){
 
         //live only numbers
         cnpj = cnpj.replace(/[^0-9]+/g,"");
@@ -46,6 +43,13 @@ angular.module("cupom").directive("uiCnpj",function(){
         ctrl.$setViewValue(_formatCnpj(ctrl.$viewValue));
         //render the formated value
         ctrl.$render();
+
+        //What will be passed to scope
+        ctrl.$parsers.push(function(cnpj){
+
+          //create a cnpj with only numbers
+          return cnpj.replace(/[^0-9]+/g,"");;
+        });
       });
 
     },

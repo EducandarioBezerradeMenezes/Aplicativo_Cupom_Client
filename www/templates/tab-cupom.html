@@ -18,8 +18,8 @@
     <!--Textbox: Data of Cupom-->
     <label class="item item-input">
       <span class="input-label">Data:</span>
-      <input name="data" type="text" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
-      ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-date ui-focus/>
+      <input name="data" type="date" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
+      ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-focus/>
     </label>
     <br/>
 
@@ -27,20 +27,22 @@
     <label class="item item-input">
       <span class="input-label">CNPJ:</span>
       <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
-      ng-keypress="$event.which==13 && cupom.cnpj.length==18 && changeFocus('valor')" ng-blur="cupom.cnpj.length==18 || invalid('cnpj')" ui-cnpj ui-focus/>
+      ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('valor')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
     </label>
     <br/>
 
     <!--Textbox: Total of Cupom-->
     <label class="item item-input">
       <span class="input-label">Total:</span>
-      <input name="valor" type="text" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
-      ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom()" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus/>
+      <input name="valor" type="tel" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
+      ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom(cupom)" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus/>
     </label>
+
+    {{cupom}}
 
     <br/><br/>
     <!--Button: Saves new Cupom-->
-    <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || cupom.valo==0" ng-click="saveCupom()">Cadastrar Cupom</button>
+    <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || !checkCNPJ(cupom.cnpj) || cupom.valo <= 0" ng-click="saveCupom(cupom)">Cadastrar Cupom</button>
   </ion-content>
       </form>
 </ion-view>

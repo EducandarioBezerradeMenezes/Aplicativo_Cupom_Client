@@ -5,3 +5,6 @@ node_modules/
 platforms/
 plugins/
 *.bat
+
+# Ionic BUG
+res

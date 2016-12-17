@@ -9,10 +9,7 @@ angular.module("cupom").directive("uiCoo",function(){
 
     link: function(scope, element, attrs, ctrl){
       //Function to format the coo
-      var _formatCoo = function(coo){
-
-        //if empty return empty
-        if(!coo) return coo;
+      var _formatCoo = function(coo = ""){
 
         //live only numbers
         coo = coo.replace(/[^0-9]+/g,"");
