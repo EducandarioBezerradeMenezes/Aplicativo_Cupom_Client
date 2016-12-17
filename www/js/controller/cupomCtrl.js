@@ -32,9 +32,14 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
 
   //Save a new Cupom
   $scope.saveCupom = function(){
+
+    $scope.sending = true;
+
     $scope.cupom.valor = $scope.cupom.valor.replace("R$", "");
     //Post Cupom on Backend
-    //cupomApi.postCupom($scope.cupom).success(function(){
+    cupomApi.postCupom($scope.cupom).success(function(){
+
+      $scope.sending = false;
 
       //Change focus back to COO field
       $scope.changeFocus("coo");
@@ -47,7 +52,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
         $scope.err   = {};
         $scope.cupom = {};
       },100);
-    //});
+    });
   };
 
   //Show Alert with cupom image
@@ -55,9 +60,6 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
 
   //Creating Alert
   var alertPopup = $ionicPopup.alert({
-
-    //Text to appear on Alert
-    title: 'Insira os campos informados a seguir!',
 
     //HTML of Alert
     template: `
@@ -67,6 +69,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     `
   });
 };
+
 
   //Cupom
   $scope.cupom = {};

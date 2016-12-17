@@ -1,46 +1,50 @@
 <!--Template: Manual Registration of new Cupom-->
 <ion-view view-title="Cupom Fiscal">
-<form name = "cupomForm">
-  <ion-content class="padding">
+  <form name = "cupomForm">
 
-    <button type="button" class="button block helpper" name="button" ng-click="showAlert()"><strong>Ajuda</strong></button>
+    <ion-content class="padding">
 
-    <!--Form: Creates a new Cupom-->
+      <!-- show Spinner while send cupom from api -->
+      <div class="divSpinner" ng-if="sending"><ion-spinner class="container span7" icon="spiral" ></ion-spinner></div>
 
-    <!--Textbox: COO of Cupom-->
-    <label class="item item-input">
-      <span class="input-label">COO:</span>
-      <input name="coo" type="text" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
-      ng-keypress="$event.which==13 && cupom.coo.length==6 && changeFocus('data')" ng-blur="cupom.coo.length==6 || invalid('coo')" ui-coo ui-focus/>
-    </label>
-    <br/>
+      <button type="button" class="button block helpper" name="button" ng-click="showAlert()"><strong>Ajuda</strong></button>
+      <!--Form: Creates a new Cupom-->
 
-    <!--Textbox: Data of Cupom-->
-    <label class="item item-input">
-      <span class="input-label">Data:</span>
-      <input name="data" type="text" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
-      ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-date ui-focus/>
-    </label>
-    <br/>
+      <!--Textbox: COO of Cupom-->
+      <label class="item item-input">
+        <span class="input-label">COO:</span>
+        <input name="coo" type="text" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
+        ng-keypress="$event.which==13 && cupom.coo.length==6 && changeFocus('data')" ng-blur="cupom.coo.length==6 || invalid('coo')" ui-coo ui-focus ng-disabled = "sending" />
+      </label>
+      <br/>
 
-    <!--Textbox: CNPJ of Cupom-->
-    <label class="item item-input">
-      <span class="input-label">CNPJ:</span>
-      <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
-      ng-keypress="$event.which==13 && cupom.cnpj.length==18 && changeFocus('valor')" ng-blur="cupom.cnpj.length==18 || invalid('cnpj')" ui-cnpj ui-focus/>
-    </label>
-    <br/>
+      <!--Textbox: Data of Cupom-->
+      <label class="item item-input">
+        <span class="input-label">Data:</span>
+        <input name="data" type="text" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
+        ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-date ui-focus ng-disabled = "sending" />
+      </label>
+      <br/>
 
-    <!--Textbox: Total of Cupom-->
-    <label class="item item-input">
-      <span class="input-label">Total:</span>
-      <input name="valor" type="text" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
-      ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom()" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus/>
-    </label>
+      <!--Textbox: CNPJ of Cupom-->
+      <label class="item item-input">
+        <span class="input-label">CNPJ:</span>
+        <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
+        ng-keypress="$event.which==13 && cupom.cnpj.length==18 && changeFocus('valor')" ng-blur="cupom.cnpj.length==18 || invalid('cnpj')" ui-cnpj ui-focus ng-disabled = "sending" />
+      </label>
+      <br/>
 
-    <br/><br/>
-    <!--Button: Saves new Cupom-->
-    <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || cupom.valo==0" ng-click="saveCupom()">Cadastrar Cupom</button>
-  </ion-content>
-      </form>
+      <!--Textbox: Total of Cupom-->
+      <label class="item item-input">
+        <span class="input-label">Total:</span>
+        <input name="valor" type="text" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
+        ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom()" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus ng-disabled = "sending" />
+      </label>
+
+      <br/><br/>
+      <!--Button: Saves new Cupom-->
+      <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || cupom.valo==0" ng-click="saveCupom()">Cadastrar Cupom</button>
+    </ion-content>
+  </form>
+
 </ion-view>

@@ -6,6 +6,6 @@
 angular.module("cupom").value("config",{
 
   //Connect to server
-  baseUrl:"http://192.168.25.32:8080",
+  baseUrl:"http://cupomapi.herokuapp.com",
   ocrUrl :"https://api.ocr.space/parse/image",
 });
