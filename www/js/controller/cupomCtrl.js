@@ -136,7 +136,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
       $scope.sending = false;
 
       //Inform Success to User
-      alert('Cupom Enviado com Sucesso!');
+      $scope.showAlertSucess();
 
 
       //Change focus back to COO field
@@ -168,9 +168,26 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
       <!--Image of a cupom and it's fields-->
       <img src="img/cupom.jpg" class="cupomAlert" alt="Foto contendo as informações relacionadas ao preenchimento manual do cupom" />
     `
+    });
+  };
+
+  //Show Alert with sucess image
+  $scope.showAlertSucess = function() {
+
+  //Creating Alert
+  var alertPopupSucess = $ionicPopup.alert({
+
+    //Text to appear on Alert
+    title: 'Doação Completa',
+
+
+    //HTML of Alert
+    template: `
+      <!-- Send info cupom done -->
+      <img src="img/sucess.png" class="cupomSucess" alt="Cadastro sucesso" />
+    `
   });
 };
-
 
   //Cupom
   $scope.cupom = {};

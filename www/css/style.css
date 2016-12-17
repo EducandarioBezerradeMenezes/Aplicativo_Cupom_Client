@@ -54,6 +54,10 @@ section {
   width: 100%;
 }
 
+.cupomSucess {
+  width: 100%;
+}
+
 /* Spinner  */
 .divSpinner {
   margin: auto;
