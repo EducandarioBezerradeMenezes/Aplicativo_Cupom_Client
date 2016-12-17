@@ -39,7 +39,7 @@
       <label class="item item-input">
         <span class="input-label">Total:</span>
         <input name="valor" type="tel" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
-        ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom(cupom)" ng-blur="cupom.valor.length>4 || invalid('valor')" ui-money ui-focus/>
+        ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom(cupom)" ng-blur="cupom.valor>0 || invalid('valor')" ui-money ui-focus/>
       </label>
 
       <br/><br/>
