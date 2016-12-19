@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    privileged: true
+    volumes:
+      - .:/project
+    ports:
+      - "8100:8100"
