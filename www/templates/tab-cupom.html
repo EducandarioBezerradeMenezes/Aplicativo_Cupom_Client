@@ -11,11 +11,11 @@
 
       <!--Form: Creates a new Cupom-->
 
-      <!--Textbox: COO of Cupom-->
+      <!--Textbox: CNPJ of Cupom-->
       <label class="item item-input">
-        <span class="input-label">COO:</span>
-        <input name="coo" type="text" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
-        ng-keypress="$event.which==13 && cupom.coo.length==6 && changeFocus('data')" ng-blur="cupom.coo.length==6 || invalid('coo')" ui-coo ui-focus/>
+        <span class="input-label">CNPJ:</span>
+        <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
+        ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('valor')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
       </label>
       <br/>
 
@@ -27,11 +27,11 @@
       </label>
       <br/>
 
-      <!--Textbox: CNPJ of Cupom-->
+      <!--Textbox: COO of Cupom-->
       <label class="item item-input">
-        <span class="input-label">CNPJ:</span>
-        <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
-        ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('valor')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
+        <span class="input-label">COO:</span>
+        <input name="coo" type="text" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
+        ng-keypress="$event.which==13 && cupom.coo.length==6 && changeFocus('data')" ng-blur="cupom.coo.length==6 || invalid('coo')" ui-coo ui-focus/>
       </label>
       <br/>
 
