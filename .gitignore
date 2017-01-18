@@ -8,3 +8,6 @@ plugins/
 
 # Ionic Bug
 res/
+
+# bower
+lib/
