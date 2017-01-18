@@ -130,7 +130,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     $scope.sending = true;
 
     //Post Cupom on Backend
-    cupomApi.postCupom(cupom).success(function(){
+    cupomApi.postCupom(cupom).then(function(){
 
       //Cupom Sent to BackEnd
       $scope.sending = false;
@@ -150,6 +150,8 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
         $scope.err = {};
         $scope.cupom = {};
       },100);
+    }).catch(function(erro){
+        $scope.sending = false;
     });
   };
 
