@@ -2,7 +2,7 @@
 //Manage Cupom template
 
 //Creates new Controller in "cupom" module
-angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, $ionicPopup, cupomApi) {
+angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, $ionicPopup, cupomApi, ionicDatePicker) {
 
   //Change focus to element with specific ID
   $scope.changeFocus = function(name){
@@ -20,43 +20,21 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     $scope.err[name] = name + " invalid!";
   }
 
-  //Verify Month of Date
-  var checkMonth = function(date, day){
+  //Minimal Valid Date
+  var minimalDate = function(){
 
-    //Not a Date
-    if(!(date instanceof Date)) return false;
+    let month = (new Date()).getMonth();
+    let year = (new Date()).getFullYear();
+    if((new Date()).getDate() < 20) {
+      month --;
 
-    //Get Day, Month and Year of Data
-    const vDate = {
-      day:   date.getDate(),
-      month: date.getMonth(),
-      year:  date.getFullYear()
-    }
-
-    //Get Day, Month and Year of Current Date
-    const cDate = {
-      day:   new Date().getDate(),
-      month: new Date().getMonth(),
-      year:  new Date().getFullYear()
-    }
-
-    //No Day to Validate or Same Month
-    if(typeof day != 'number' || vDate.month == cDate.month) return true;
-
-    //Day to Validate
-    else {
-
-      //Turn month 12 to Month 0 of next year
-      if(vDate.month == 12) {
-        vDate.month = 0;
-        vDate.year += 1;
+      if(month < 0) {
+        month = 11;
+        year--;
       }
-
-      if((cDate.day < day) && (vDate.month == (cDate.month-1)) && (vDate.year == cDate.year)) return true;
     }
 
-    //Return false if everything elses fail
-    return false;
+    return new Date(year, month, 1);
   }
 
   //Function Aquired Online
@@ -116,11 +94,24 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
   //Validate Data
   $scope.checkDate = function(data){
 
-    //Future
-    if(new Date() < data) return false;
+    if(!data) return false;
 
-    //Validate Month
-    return checkMonth(data, 20);
+    data = data.split('/');
+    data = new Date(data[2], data[1] - 1, data[0]);
+
+    return data > minimalDate() && data <= (new Date());
+  }
+
+  $scope.chooseDate = function() {
+
+    const month = (new Date()).getDate() > 20 ? (new Date()).getMonth() -1 : (new Date()).getMonth();
+    ionicDatePicker.openDatePicker({callback: function(date){
+        date = new Date(date);
+        $scope.cupom.data = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+      },
+      from: minimalDate(),
+      to: new Date(),
+    });
   }
 
   //Save a new Cupom

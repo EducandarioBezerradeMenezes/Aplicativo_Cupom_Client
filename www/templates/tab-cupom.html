@@ -14,23 +14,24 @@
       <!--Textbox: CNPJ of Cupom-->
       <label class="item item-input">
         <span class="input-label">CNPJ:</span>
-        <input name="cnpj" type="text" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
+        <input name="cnpj" type="tel" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
         ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('valor')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
       </label>
       <br/>
 
       <!--Textbox: Data of Cupom-->
-      <label class="item item-input">
+      <div class="item item-input">
         <span class="input-label">Data:</span>
-        <input name="data" type="text" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
-        ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-focus/>
-      </label>
+        <input name="data" type="tel" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
+        ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-date ui-focus/>
+        <button type="button" ng-click="chooseDate()" class="button icon ion-calendar" style="margin-left: -1000px;"></button>
+      </div>
       <br/>
 
       <!--Textbox: COO of Cupom-->
       <label class="item item-input">
         <span class="input-label">COO:</span>
-        <input name="coo" type="text" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
+        <input name="coo" type="tel" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="6"
         ng-keypress="$event.which==13 && cupom.coo.length==6 && changeFocus('data')" ng-blur="cupom.coo.length==6 || invalid('coo')" ui-coo ui-focus/>
       </label>
       <br/>

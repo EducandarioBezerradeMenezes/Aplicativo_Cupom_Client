@@ -6,5 +6,11 @@ platforms/
 plugins/
 *.bat
 
+android-release-unsigned.apk
+minha-chave.keystore
+
 # Ionic Bug
 res/
+
+# bower
+lib/
