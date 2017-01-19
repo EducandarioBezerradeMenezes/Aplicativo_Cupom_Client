@@ -4,7 +4,7 @@
     <ion-content class="padding">
 
       <!-- Show Spinner while send cupom from api -->
-      <div class="divSpinner" ng-if="sending"><ion-spinner class="container span7" icon="spiral" ></ion-spinner></div>
+      <div class="divSpinner" ng-if="sending"><ion-spinner class="container span7" icon="android" ></ion-spinner></div>
 
       <!--Button to inform user of fields -->
       <button type="button" class="button block helpper" name="button" ng-click="showAlert()"><strong>Ajuda</strong></button>
@@ -22,7 +22,7 @@
       <!--Textbox: Data of Cupom-->
       <label class="item item-input">
         <span class="input-label">Data:</span>
-        <input name="data" type="date" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
+        <input name="data" type="text" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
         ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('cnpj')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-focus/>
       </label>
       <br/>
