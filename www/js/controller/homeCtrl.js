@@ -2,34 +2,53 @@
 //Manage Home template
 
 //Creates new Controller in "cupom" module
-angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $cordovaBarcodeScanner, $ionicPopup, cupomApi) {
+angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ionicPlatform, $cordovaFlashlight, $cordovaBarcodeScanner, $ionicPopup, cupomApi) {
 
   $scope.scanBarcode = function() {
-        $cordovaBarcodeScanner.scan().then(function(imageData) {
-            //Show Spinner
-            $scope.sending = true;
 
-            //Replace qrCode
-            qrCode = imageData.text.split('|')[0];
-            qrCode = qrCode.replace(/[CFe]{1}/g, '');
+    // $cordovaFlashlight.switchOn()
+    // .then(
+    //   function (success) { console.error("sim"); },
+    //   function (error) { console.error("nao" + error) });
 
-            if( qrCode.length == 44 || qrCode.length == 45 ) {
-              cupomApi.postQrCode(qrCode).then(function(result){
-                  //Close Spinner
-                  $scope.sending = true;
-                  $scope.showAlertSucess();
-              }).catch(function(result){
-                  alert("Falha no envio.");
-                });
-            }
-            else {
+    $ionicPlatform.ready(function() {
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+          //Show Spinner
+          $scope.sending = true;
+          console.error("Image data -> " + imageData.text);
+          //Replace qrCode
+          qrCode = imageData.text.split('|')[0];
+          console.error("qrCode -> " + qrCode);
+          qrCode = qrCode.replace(/CFe/g, '');
+
+          if( qrCode.length == 44 || qrCode.length == 45 ) {
+            cupomApi.postQrCode(qrCode).then(function(result){
                 //Close Spinner
                 $scope.sending = false;
-                alert("Falha na leitura." );
-            }
-        }, function(error) {
-            console.error("Falha na leitura...");
-        });
+                $scope.showAlertSucess();
+            }).catch(function(result){
+                alert("Falha no envio.");
+              });
+          }
+          else {
+              //Close Spinner
+              $scope.sending = false;
+              console.error("else -> " + qrCode);
+              qrCode ? $scope.showAlertFalha(): '';
+          }
+      }, function(error) {
+          $scope.showAlertFalha();
+          console.error("Falha na leitura...");
+      });
+
+      //Close Spinner
+      $scope.sending = false;
+    });
+
+    //     $cordovaFlashlight.switchOff()
+    // .then(
+    //   function (success) { console.error("batata"); },
+    //   function (error) { console.error("quente"); });
     };
 
     //Show Alert with sucess image
@@ -49,5 +68,25 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $cor
       `
     });
   };
+
+  //Show Alert with sucess image
+  $scope.showAlertFalha = function() {
+
+  //Creating Alert
+  var alertPopupFalha = $ionicPopup.alert({
+
+    //Text to appear on Alert
+    title: 'Falha na leitura',
+
+
+    //HTML of Alert
+    template: `
+      <!-- Send info cupom done -->
+      <center><img src="img/error.png" class="cupomError" alt="Falha na Leitura" /><center />
+      <button class="button button-block button-positive" name="qrcode2" ng-click="scanBarcode()">Tente Novamente</button>
+      <a href="#/tab/cupom" class="button button-block button-positive" type="button" name="manual2">Informe Manualmente</a>
+    `
+  });
+};
 
 });

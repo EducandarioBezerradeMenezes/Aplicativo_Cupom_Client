@@ -58,6 +58,10 @@ section {
   width: 100%;
 }
 
+.cupomError {
+  width: 65%;
+}
+
 /* Spinner  */
 .divSpinner {
   color: blue;
