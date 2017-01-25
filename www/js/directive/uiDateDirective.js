@@ -8,17 +8,17 @@ angular.module("cupom").directive("uiDate",function(){
     require: "ngModel",
 
     link: function(scope, element, attrs, ctrl){
-      //Function to format the coo
+      //Function to format the date
       var _formatDate = function(date = ""){
 
         //live only numbers
         date = date.replace(/[^0-9]+/g,"");
 
         if(date.length > 2) date = date.substring(0, 2) + '/' + date.substring(2);
-        if(date.length > 5) date = date.substring(0, 5) + '/' + date.substring(4);
+        if(date.length > 5) date = date.substring(0, 5) + '/' + date.substring(5);
         if(date.length > 10) date = date.substring(0,10);
 
-        //return formated coo
+        //return formated date
         return date;
       };
 

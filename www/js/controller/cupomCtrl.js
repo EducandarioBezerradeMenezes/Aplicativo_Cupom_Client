@@ -4,6 +4,13 @@
 //Creates new Controller in "cupom" module
 angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $location, $timeout, $ionicPopup, cupomApi, ionicDatePicker) {
 
+  Number.prototype.padding = function padding(qtd) {
+
+    let zeros = '';
+    for(let i = 0; i < (qtd -1); i++) zeros += '0';
+    return ((zeros + this).slice(-qtd));
+  }
+
   //Change focus to element with specific ID
   $scope.changeFocus = function(name){
     $scope.focus = name;
@@ -93,10 +100,10 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
 
   //Validate Data
   $scope.checkDate = function(data){
-
     if(!data) return false;
 
     data = data.split('/');
+    console.error(data[2] + " - " + (xdata[1] - 1) + " - " + data[0]);
     data = new Date(data[2], data[1] - 1, data[0]);
 
     return data > minimalDate() && data <= (new Date());
@@ -107,7 +114,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     const month = (new Date()).getDate() > 20 ? (new Date()).getMonth() -1 : (new Date()).getMonth();
     ionicDatePicker.openDatePicker({callback: function(date){
         date = new Date(date);
-        $scope.cupom.data = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+        $scope.cupom.data = date.getDate().padding(2) + '/' + (date.getMonth() + 1).padding(2) + '/' + date.getFullYear().padding(4);
       },
       from: minimalDate(),
       to: new Date(),
@@ -121,7 +128,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     $scope.sending = true;
 
     //Post Cupom on Backend
-    cupomApi.postCupom(cupom).then(function(){
+    cupomApi.postCupom(angular.copy(cupom)).then(function(){
 
       //Cupom Sent to BackEnd
       $scope.sending = false;
@@ -137,10 +144,9 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
       $scope.cupomForm.$setPristine();
 
       //Clean Fields after focus is on COO
-      $timeout(function(){
-        $scope.err = {};
-        $scope.cupom = {};
-      },100);
+      $scope.err = {};
+      $scope.cupom = {};
+
     }).catch(function(erro){
         $scope.sending = false;
     });

@@ -60,7 +60,6 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ion
       //Text to appear on Alert
       title: 'Doação Completa',
 
-
       //HTML of Alert
       template: `
         <!-- Send info cupom done -->
@@ -76,16 +75,16 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ion
   var alertPopupFalha = $ionicPopup.alert({
 
     //Text to appear on Alert
-    title: 'Falha na leitura',
-
+    title: 'Encontramos um problema',
 
     //HTML of Alert
     template: `
-      <!-- Send info cupom done -->
+      <!-- Send info qrCode error -->
       <center><img src="img/error.png" class="cupomError" alt="Falha na Leitura" /><center />
-      <button class="button button-block button-positive" name="qrcode2" ng-click="scanBarcode()">Tente Novamente</button>
-      <a href="#/tab/cupom" class="button button-block button-positive" type="button" name="manual2">Informe Manualmente</a>
-    `
+      Falha ao ler o cupom,, tente novamente ou insira manualmente o cupom.
+      <br>
+      Clique em OK para sair.
+      `
   });
 };
 
