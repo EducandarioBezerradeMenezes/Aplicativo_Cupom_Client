@@ -98,12 +98,23 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     return true;
   }
 
+  $scope.checkCoo = function(coo){
+    if(!coo)
+      return false;
+
+    if( coo.length >= 1 && coo.length <= 8 )
+      return true;
+
+    return false;
+  }
+
+
   //Validate Data
   $scope.checkDate = function(data){
     if(!data) return false;
 
     data = data.split('/');
-    console.error(data[2] + " - " + (xdata[1] - 1) + " - " + data[0]);
+    console.error(data[2] + " - " + (data[1] - 1) + " - " + data[0]);
     data = new Date(data[2], data[1] - 1, data[0]);
 
     return data > minimalDate() && data <= (new Date());

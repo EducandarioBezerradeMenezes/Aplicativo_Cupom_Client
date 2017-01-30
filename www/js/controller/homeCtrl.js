@@ -6,50 +6,46 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ion
 
   $scope.scanBarcode = function() {
 
-    // $cordovaFlashlight.switchOn()
-    // .then(
-    //   function (success) { console.error("sim"); },
-    //   function (error) { console.error("nao" + error) });
-
     $ionicPlatform.ready(function() {
       $cordovaBarcodeScanner.scan().then(function(imageData) {
           //Show Spinner
           $scope.sending = true;
-          console.error("Image data -> " + imageData.text);
+          console.log("Image data -> " + imageData.text);
+          console.log("Image data -> " + imageData.format);
           //Replace qrCode
           qrCode = imageData.text.split('|')[0];
           console.error("qrCode -> " + qrCode);
           qrCode = qrCode.replace(/CFe/g, '');
 
           if( qrCode.length == 44 || qrCode.length == 45 ) {
-            cupomApi.postQrCode(qrCode).then(function(result){
+
+            var objQrCode = {};
+
+            objQrCode.valor = qrCode;
+
+            cupomApi.postQrCode(objQrCode).then(function(result){
                 //Close Spinner
                 $scope.sending = false;
                 $scope.showAlertSucess();
             }).catch(function(result){
-                alert("Falha no envio.");
+                $scope.sending = false;
+                qrCode ? $scope.showAlertFalha(): '';
               });
           }
           else {
               //Close Spinner
               $scope.sending = false;
-              console.error("else -> " + qrCode);
               qrCode ? $scope.showAlertFalha(): '';
           }
       }, function(error) {
+          $scope.sending = false;
           $scope.showAlertFalha();
-          console.error("Falha na leitura...");
-      });
-
+      } );
       //Close Spinner
       $scope.sending = false;
     });
 
-    //     $cordovaFlashlight.switchOff()
-    // .then(
-    //   function (success) { console.error("batata"); },
-    //   function (error) { console.error("quente"); });
-    };
+  };
 
     //Show Alert with sucess image
     $scope.showAlertSucess = function() {
@@ -81,7 +77,7 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ion
     template: `
       <!-- Send info qrCode error -->
       <center><img src="img/error.png" class="cupomError" alt="Falha na Leitura" /><center />
-      Falha ao ler o cupom,, tente novamente ou insira manualmente o cupom.
+      Falha ao ler o cupom, tente novamente ou insira manualmente o cupom.
       <br>
       Clique em OK para sair.
       `

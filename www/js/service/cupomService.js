@@ -13,7 +13,7 @@ angular.module("cupom").factory("cupomApi", function($http, config){
   //Insert new QrCode
   var _postQrCode = (qrCode) => {
 
-    return $http.post(config.baseUrl + "/Chave");
+    return $http.post(config.baseUrl + "/Chave", qrCode);
   }
 
   //Return functions to be used

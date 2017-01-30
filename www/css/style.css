@@ -78,3 +78,8 @@ section {
   height: 100% !important;
   margin: auto !important;
 }
+
+.error {
+  color: red;
+  font: bold 14px;
+}
