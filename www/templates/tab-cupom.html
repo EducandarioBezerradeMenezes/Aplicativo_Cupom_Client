@@ -19,17 +19,17 @@
       <label class="item item-input">
         <span class="input-label">CNPJ:</span>
         <input name="cnpj" type="tel" placeholder="{{err.cnpj || 'Ex: 99.999.999/9999-99'}}" ng-model="cupom.cnpj" ng-required="true" ng-minlength="18"
-        ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('data')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
+        ng-keypress="$event.which==13 && checkCNPJ(cupom.cnpj) && changeFocus('date')" ng-blur="checkCNPJ(cupom.cnpj) || invalid('cnpj')" ui-cnpj ui-focus/>
       </label>
       <br/>
       <div>
-        <center><span class="error" ng-show="err.data && !checkDate(cupom.data)">* Data Invalida - Informe a data do mês atual ou do mês anterior caso seja antes do dia 20. </span></center>
+        <center><span class="error" ng-show="err.date && !checkDate(cupom.date)">* Data Invalida - Informe a data do mês atual ou do mês anterior caso seja antes do dia 20. </span></center>
       </div>
       <!--Textbox: Data of Cupom-->
       <div class="item item-input">
         <span class="input-label">Data:</span>
-        <input name="data" type="tel" placeholder="{{err.data || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.data" ng-required="true" ng-minlength="10"
-        ng-keypress="$event.which==13 && checkDate(cupom.data) && changeFocus('coo')" ng-blur="checkDate(cupom.data) || invalid('data')" ui-date ui-focus/>
+        <input name="date" type="tel" placeholder="{{err.date || 'Ex: DD/MM/AAAA'}}" ng-model="cupom.date" ng-required="true" ng-minlength="10"
+        ng-keypress="$event.which==13 && checkDate(cupom.date) && changeFocus('coo')" ng-blur="checkDate(cupom.date) || invalid('date')" ui-date ui-focus/>
         <button type="button" ng-click="chooseDate()" class="button icon ion-calendar" style="margin-left: -1000px;"></button>
       </div>
       <br/>
@@ -40,22 +40,22 @@
       <label class="item item-input">
         <span class="input-label">COO:</span>
         <input name="coo" type="tel" placeholder="{{err.coo || 'Ex: 999999'}}" ng-model="cupom.coo" ng-required="true" ng-minlength="1"
-        ng-keypress="$event.which==13 && cupom.coo.length<=6 && changeFocus('valor')" ng-blur="cupom.coo.length<=6 || invalid('coo')" ui-coo ui-focus/>
+        ng-keypress="$event.which==13 && cupom.coo.length<=6 && changeFocus('total')" ng-blur="cupom.coo.length<=6 || invalid('coo')" ui-coo ui-focus/>
       </label>
       <br/>
       <div>
-            <center><span class="error" ng-show="err.valor && !cupom.valor>0">* Valor Invalido - Informe um valor maior que zero.</span></center>
+            <center><span class="error" ng-show="err.total && !cupom.total>0">* Valor Invalido - Informe um valor maior que zero.</span></center>
       </div>
       <!--Textbox: Total of Cupom-->
       <label class="item item-input">
         <span class="input-label">Total:</span>
-        <input name="valor" type="tel" placeholder="{{err.valor || 'Ex: R$ 99,99'}}" ng-model="cupom.valor" ng-required="true" ng-minlength="4"
-        ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom(cupom)" ng-blur="cupom.valor>0 || invalid('valor')" ui-money ui-focus/>
+        <input name="total" type="tel" placeholder="{{err.total || 'Ex: R$ 99,99'}}" ng-model="cupom.total" ng-required="true" ng-minlength="4"
+        ng-keypress="$event.which==13 && cupomForm.$valid && saveCupom(cupom)" ng-blur="cupom.total>0 || invalid('total')" ui-money ui-focus/>
       </label>
 
       <br/><br/>
       <!--Button: Saves new Cupom-->
-      <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.data) || !checkCNPJ(cupom.cnpj) || cupom.valo <= 0" ng-click="saveCupom(cupom)">Cadastrar Cupom</button>
+      <button class="button button-block button-positive" ng-disabled = "cupomForm.$invalid || !checkDate(cupom.date) || !checkCNPJ(cupom.cnpj) || cupom.valo <= 0" ng-click="saveCupom(cupom)">Cadastrar Cupom</button>
     </ion-content>
   </form>
 </ion-view>

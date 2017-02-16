@@ -6,5 +6,5 @@
 angular.module("cupom").value("config",{
 
   //Connect to server
-  baseUrl:"http://45.55.197.218:60086"
+  baseUrl:"http://45.55.197.218:8008"
 });

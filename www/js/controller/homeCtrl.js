@@ -21,7 +21,7 @@ angular.module('cupom').controller('homeCtrl', function($scope, $rootScope, $ion
 
             var objQrCode = {};
 
-            objQrCode.valor = qrCode;
+            objQrCode.value = qrCode;
 
             cupomApi.postQrCode(objQrCode).then(function(result){
                 //Close Spinner

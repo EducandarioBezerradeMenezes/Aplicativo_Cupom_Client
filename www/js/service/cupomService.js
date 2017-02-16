@@ -7,13 +7,13 @@ angular.module("cupom").factory("cupomApi", function($http, config){
   //Insert new cupom
   var _postCupom = (cupom) => {
 
-    return $http.post(config.baseUrl + "/Cupom", cupom);
+    return $http.post(config.baseUrl + "/coupon", cupom);
   };
 
   //Insert new QrCode
   var _postQrCode = (qrCode) => {
 
-    return $http.post(config.baseUrl + "/Chave", qrCode);
+    return $http.post(config.baseUrl + "/qrcode", qrCode);
   }
 
   //Return functions to be used

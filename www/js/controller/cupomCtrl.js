@@ -110,14 +110,13 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
 
 
   //Validate Data
-  $scope.checkDate = function(data){
-    if(!data) return false;
+  $scope.checkDate = function(date){
+    if(!date) return false;
 
-    data = data.split('/');
-    console.error(data[2] + " - " + (data[1] - 1) + " - " + data[0]);
-    data = new Date(data[2], data[1] - 1, data[0]);
+    date = date.split('/');
+    date = new Date(date[2], date[1] - 1, date[0]);
 
-    return data > minimalDate() && data <= (new Date());
+    return date > minimalDate() && date <= (new Date());
   }
 
   $scope.chooseDate = function() {
@@ -125,7 +124,7 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     const month = (new Date()).getDate() > 20 ? (new Date()).getMonth() -1 : (new Date()).getMonth();
     ionicDatePicker.openDatePicker({callback: function(date){
         date = new Date(date);
-        $scope.cupom.data = date.getDate().padding(2) + '/' + (date.getMonth() + 1).padding(2) + '/' + date.getFullYear().padding(4);
+        $scope.cupom.date = date.getDate().padding(2) + '/' + (date.getMonth() + 1).padding(2) + '/' + date.getFullYear().padding(4);
       },
       from: minimalDate(),
       to: new Date(),
@@ -138,8 +137,15 @@ angular.module('cupom').controller('cupomCtrl', function($scope, $rootScope, $lo
     //Sending Cupom to BackEnd
     $scope.sending = true;
 
+    const postObj = angular.copy(cupom);
+
+    postObj.total = postObj.total.toString();
+
+    const date = postObj.date.split('/');
+    postObj.date = `${date[2]}-${date[1]}-${date[0]}`;
+
     //Post Cupom on Backend
-    cupomApi.postCupom(angular.copy(cupom)).then(function(){
+    cupomApi.postCupom(postObj).then(function(){
 
       //Cupom Sent to BackEnd
       $scope.sending = false;
